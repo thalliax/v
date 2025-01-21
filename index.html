@@ -12,109 +12,101 @@
     <style>
         body {
             margin: 0;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            height: 100vh;
-            background: url('https://64.media.tumblr.com/1d8ed530a0276402f79dffcdd97682aa/524ec758b1841286-b2/s500x750/6aae404a641400ccfa3fe5f14180f72afb9d98b1.pnj'); /* Substitua pelo caminho da sua foto de fundo */
-            background-size: cover;
-            background-position: center;
+            padding: 0;
             font-family: 'Arial', sans-serif;
             color: white;
-            text-align: center;
+            background: url('https://64.media.tumblr.com/1d8ed530a0276402f79dffcdd97682aa/524ec758b1841286-b2/s500x750/6aae404a641400ccfa3fe5f14180f72afb9d98b1.pnj') no-repeat center center/cover;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+            padding: 50px;
+            box-sizing: border-box;
+        }
+
+        .text-content {
+            width: 50%;
+            padding-right: 30px;
+        }
+
+        .text-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .text-content p {
+            font-size: 1.5rem;
+            line-height: 1.6;
         }
 
         .photo-container {
+            width: 50%;
             display: flex;
-            justify-content: space-around;
-            margin-top: 50px;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
         }
 
         .photo {
             position: relative;
-            width: 200px;
-            height: 200px;
+            width: 250px;
+            height: 250px;
             overflow: hidden;
-            cursor: pointer;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
         }
 
         .photo img {
             width: 100%;
             height: 100%;
+            object-fit: cover;
             transition: transform 0.5s;
         }
 
         .photo:hover img {
-            transform: rotateY(180deg);
+            transform: scale(1.1);
         }
 
-        .photo-overlay {
+        footer {
             position: absolute;
-            top: 0;
-            left: 0;
+            bottom: 20px;
             width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             text-align: center;
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
-
-        .photo:hover .photo-overlay {
-            opacity: 1;
+            font-size: 1.2rem;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="title1">
-            <h1>orm, você aceita ser minha namorada?</h1>
+        <div class="text-content">
+            <h1>Meu amor por você</h1>
+            <p>
+                Desde o momento em que te conheci, soube que você era especial.  
+                Cada dia ao seu lado me faz perceber o quanto sou sortudo.  
+                Quero construir momentos inesquecíveis juntos,  
+                com carinho, respeito e muito amor.
+            </p>
+            <p>Eu te amo, hoje e sempre!</p>
         </div>
-        <div class="content1">
-            <button class="yes">Sim</button>
-            <span>Ou</span>
-            <button class="no">Não</button>
-        </div>
-        <div class="content2">
-            <!-- Galeria de Fotos -->
-            <div class="photo-container">
-                <div class="photo">
-                    <img src="https://i.pinimg.com/originals/c5/62/86/c56286d044bb834dc688ace36fbb1814.gif" alt="Foto 1">
-                    <div class="photo-overlay">
-                        <p>tudo o que eu quero é ficar ao seu lado, demonstrando o meu amor todos os dias, te fazendo feliz.</p>
-                    </div>
-                </div>
-                <div class="photo">
-                    <img src="https://64.media.tumblr.com/43d38dbaf5c004765ca8969ef09867e9/f7e84d1697b307bf-62/s400x600/e8f94ec4b5fa0f1d668f7e2a523cfeca3ddd68dd.gif" alt="Foto 2">
-                    <div class="photo-overlay">
-                        <p>"onde não há você, não existe eu, só vazio" 
-                        </p>
-                    </div>
-                </div>
-                <div class="photo">
-                    <img src="https://64.media.tumblr.com/aa3f6adb36e55fc5ea5810df15e08564/0be7a27af48e02d5-66/s540x810/8665f88b37d8c75a7e654bb05d58911511433a03.gif" alt="gif 4">
-                    <div class="photo-overlay">
-                        <p>você é a minha pessoa, o meu amor, a minha felicidade.</p>
-                    </div>        
-                </div>
-                <div class="photo">
-                   <img src="https://64.media.tumblr.com/828d294880d61e70257c94e055b02790/0a3d937cad30a9bf-32/s400x600/86e4d7b15047b45acdd843790520590c69435a84.jpg" alt="Foto 3">
-                    <div class="photo-overlay">
-                       <p>   eu te amo demais da conta. 
-                       </p>
-                    </div>
-                </div>
+        
+        <div class="photo-container">
+            <div class="photo">
+                <img src="https://i.pinimg.com/originals/c5/62/86/c56286d044bb834dc688ace36fbb1814.gif" alt="Foto 1">
+            </div>
+            <div class="photo">
+                <img src="https://64.media.tumblr.com/43d38dbaf5c004765ca8969ef09867e9/f7e84d1697b307bf-62/s400x600/e8f94ec4b5fa0f1d668f7e2a523cfeca3ddd68dd.gif" alt="Foto 2">
+            </div>
+            <div class="photo">
+                <img src="https://64.media.tumblr.com/aa3f6adb36e55fc5ea5810df15e08564/0be7a27af48e02d5-66/s540x810/8665f88b37d8c75a7e654bb05d58911511433a03.gif" alt="Foto 3">
+            </div>
+            <div class="photo">
+                <img src="https://64.media.tumblr.com/828d294880d61e70257c94e055b02790/0a3d937cad30a9bf-32/s400x600/86e4d7b15047b45acdd843790520590c69435a84.jpg" alt="Foto 4">
             </div>
         </div>
-        <footer>
-            <p>te amo</p>
-        </footer>
     </div>
+    <footer>Para sempre juntos ❤️</footer>
 </body>
 </html>
