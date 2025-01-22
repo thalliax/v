@@ -8,14 +8,15 @@
     <script defer src="script.js"></script>
     <link rel="icon" type="imagem/gif" href="https://media1.tenor.com/m/SR1wQXLgg8kAAAAd/seulisasoo-jenlisa.gif" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Amor</title>
     <style>
         body {
             margin: 0;
             padding: 0;
             font-family: 'Arial', sans-serif;
-            color: white;
-            background: url('https://64.media.tumblr.com/1d8ed530a0276402f79dffcdd97682aa/524ec758b1841286-b2/s500x750/6aae404a641400ccfa3fe5f14180f72afb9d98b1.pnj') no-repeat center center/cover;
+            color: black;
+            text-align: center;
         }
 
         .container {
@@ -33,12 +34,12 @@
         }
 
         .text-content h1 {
-            font-size: 3rem;
+            font-size: 2rem;
             margin-bottom: 20px;
         }
 
         .text-content p {
-            font-size: 1.5rem;
+            font-size: 1rem;
             line-height: 1.6;
         }
 
@@ -71,25 +72,35 @@
         }
 
         footer {
-            position: absolute;
+            position: relative;
             bottom: 20px;
             width: 100%;
             text-align: center;
             font-size: 1.2rem;
+        }
+
+        .chart-container {
+            margin-top: 50px;
+        }
+
+        canvas {
+            max-width: 600px;
+            margin: 20px auto;
+            display: block;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="text-content">
-            <h1>Meu amor por você</h1>
+            <h1>Mavida,</h1>
             <p>
-                Desde o momento em que te conheci, soube que você era especial.  
-                Cada dia ao seu lado me faz perceber o quanto sou sortudo.  
-                Quero construir momentos inesquecíveis juntos,  
-                com carinho, respeito e muito amor.
+                Quero eternizar pra sempre o nosso amor, de todas as formas possiveis
+                seja ela por cartas, perfis em conjunto no letterboxd, tweets, siteszinhos
+                ou até mesmo por tatuagem, que eterniza na pele como está eternizado no meu coração.
+                Você é minha vida, o meu amor inteiro. Tudo pra mim.
             </p>
-            <p>Eu te amo, hoje e sempre!</p>
+            <p>Eu te amo desde sempre e para sempre, em todas as vidas, até o fim dos tempos e além. </p>
         </div>
         
         <div class="photo-container">
@@ -107,6 +118,85 @@
             </div>
         </div>
     </div>
-    <footer>Para sempre juntos ❤️</footer>
+
+    <div class="chart-container">
+        <h2>Clique no gráfico para destacar</h2>
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <footer>❤️</footer>
+
+    <audio id="musica" autoplay>
+        <source id="audio-source" src="our-song.mp3" type="audio/mpeg">
+        Seu navegador não suporta áudio HTML5.
+    </audio>
+
+    <script>
+        // Lista de músicas em sequência
+        var playlist = ["our-song.mp3", "our-song2.mp3", "third-song.mp3"];
+        var audioElement = document.getElementById('musica');
+        var audioSource = document.getElementById('audio-source');
+        var currentTrack = 0;
+
+        audioElement.addEventListener('ended', function() {
+            currentTrack++;
+            if (currentTrack < playlist.length) {
+                audioSource.src = playlist[currentTrack];
+                audioElement.load();
+                audioElement.play();
+            } else {
+                currentTrack = 0;
+                audioSource.src = playlist[currentTrack];
+                audioElement.load();
+                audioElement.play();
+            }
+        });
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+    var originalColors = [];
+
+    var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Amor', 'Carinho', 'Companheirismo', 'Felicidade'],
+            datasets: [{
+                data: [30, 30, 20, 20],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 206, 86, 0.8)',
+                    'rgba(75, 192, 192, 0.8)'
+                ]
+            }]
+        },
+        options: {
+            responsive: true,
+            onClick: function(event, elements) {
+                if (elements.length > 0) {
+                    var index = elements[0].index;
+                    var dataset = myChart.data.datasets[0];
+
+                    // Salva cores originais se ainda não tiverem sido salvas
+                    if (originalColors.length === 0) {
+                        originalColors = [...dataset.backgroundColor];
+                    }
+
+                    // Altera a cor do segmento clicado para cinza e o resto para opaco
+                    dataset.backgroundColor = dataset.backgroundColor.map((color, i) => 
+                        i === index ? 'rgba(128, 128, 128, 0.8)' : 'rgba(200, 200, 200, 0.3)'
+                    );
+
+                    myChart.update();
+
+                    // Restaura as cores após 2 segundos
+                    setTimeout(() => {
+                        dataset.backgroundColor = [...originalColors];
+                        myChart.update();
+                    }, 2000);
+                }
+            }
+        }
+    });
+    </script>
 </body>
 </html>
